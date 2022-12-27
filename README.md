@@ -189,5 +189,5 @@ file.save();
 #### Or do it manually with the handler
 
 ```
-folder.handle;
+file.handle;
 ```
