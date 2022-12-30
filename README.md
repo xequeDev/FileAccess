@@ -1,4 +1,4 @@
-# LocalFiles
+# FileAccess
 Library that facilitates the manipulation of user files, it uses "File System Access API", polyfill coming soon...<br>
 **minus 243 lines of code (479 - 236)**
 
@@ -7,7 +7,7 @@ Library that facilitates the manipulation of user files, it uses "File System Ac
 #### Open a folder
 
 ```
-var appFiles = new LocalFiles();
+var appFiles = new FileAccess();
 var folder;
 
 function getFolder(){
@@ -106,7 +106,7 @@ folder.new("file","fileName.txt",/*Blob*/);
 #### Open a file
 
 ```
-var appFiles = new LocalFiles();
+var appFiles = new FileAccess();
 var file;
 
 function getFile(){
