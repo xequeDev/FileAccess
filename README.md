@@ -1,6 +1,6 @@
 # LocalFiles
-Library that facilitates the manipulation of user files, it uses "File System Access API", polyfill coming soon...
-*minus 243 lines of code (479 - 236)
+Library that facilitates the manipulation of user files, it uses "File System Access API", polyfill coming soon...<br>
+**minus 243 lines of code (479 - 236)**
 
 ## Folders
 
