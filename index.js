@@ -1,4 +1,4 @@
-var LocalFiles = function(){
+var FileAccess = function(){
     var mainObject = this;
     this.bufferObject = {};
     this.copyObject = {};
