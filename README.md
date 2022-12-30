@@ -1,5 +1,6 @@
 # LocalFiles
 Library that facilitates the manipulation of user files, it uses "File System Access API", polyfill coming soon...
+*minus 243 lines of code (479 - 236)
 
 ## Folders
 
@@ -19,7 +20,7 @@ function getFolder(){
 
 ```
 for(var i in folder.entries){
-  console.log(folder.entries[i].getName);
+  console.log(folder.entries[i].getName());
 }
 ```
 #### Get parent folder handle
@@ -35,14 +36,12 @@ folder.entries;
 #### Get name of folder
 
 ```
-folder.name;
-//or
 folder.getName();
 ```
 #### Get type of folder
 
 ```
-folder.type;
+folder.getType();
 ```
 #### Delete folder
 
@@ -81,14 +80,14 @@ folder.place();
 #### Rename folder
 
 ```
-//folder.rename("newName"); works only in files
+//folder.rename("newName"); && folder.rename("newName",0); works only in files
 folder.rename("newName",1);
 ```
 #### Move folder
 
 ```
-//folder.move(/*folder*/); works only in files
-folder.move(/*folder*/,1);
+//folder.move(/*folderObject*/); && folder.move(/*folderObject*/,0); works only in files
+folder.move(/*folderObject*/,1);
 ```
 #### Update folder entries
 
@@ -98,13 +97,8 @@ folder.update();
 #### Create a folder/file in folder
 
 ```
-folder.create("folder","folderName");
-folder.create("file","fileName.txt","Text...");
-```
-#### Or do it manually with the handler
-
-```
-folder.handle;
+folder.new("folder","folderName");
+folder.new("file","fileName.txt",/*Blob*/);
 ```
 
 ## Files
@@ -129,52 +123,57 @@ file.folder;
 #### Get name of file
 
 ```
-file.name;
-//or
 file.getName();
 ```
 #### Get type of file
 
 ```
-file.type;
+file.getType();
 ```
 #### Edit content of file
 
 ```
-file.write("Text in file");
+file.write(/*Blob*/);
 ```
 #### Read content of file
 
 ```
-file.read(/*blob or file or text or arrayBuffer*/"text").then(function(result){
+file.read().then(function(result){
   console.log(result);
 });
 ```
 #### Rename file
 
 ```
-file.rename("MyFile.txt");
-//or
-file.rename("MyFile.txt",1);
+file.rename("newName.txt");
+file.rename("newName.txt",0);//or
+file.rename("newName.txt",1);//or
 ```
 #### Move file
 
 ```
-file.move(/*folder*/);
-//or
-file.move(/*folder*/,1);
+file.move(/*folderObject*/);
+file.move(/*folderObject*/,0);//or
+file.move(/*folderObject*/,1);//or
 ```
 #### Copy file
 
 ```
 file.copy();
 ```
+#### Delete file
+
+```
+file.delete();
+file.delete(0);//or
+file.delete(1);//or
+```
 #### Cut file
 
 ```
 file.cut();
-//or
-file.cut(1);
+file.cut(0);//or
+file.cut(1);//or
 ```
 #### Put file in buffer
 
@@ -186,8 +185,14 @@ file.buffer();
 ```
 file.save();
 ```
-#### Or do it manually with the handler
+#### Download file
+
+```
+file.download("MyFile.txt");
+```
+#### Or do all this manually with the handler
 
 ```
 file.handle;
+folder.handle;//or
 ```
