@@ -1,6 +1,6 @@
 # FileAccess
 Library that facilitates the manipulation of user files, it uses "File System Access API", polyfill coming soon...<br>
-**minus 243 lines of code (479 - 236)**
+**more 73 lines of code (236 to 309)**
 
 ## Folders
 
@@ -23,10 +23,17 @@ for(var i in folder.entries){
   console.log(folder.entries[i].getName());
 }
 ```
-#### Get parent folder handle
+#### Get parent folder *Object*
 
 ```
-folder.folder;
+folder.getParent();
+folder.folder;//or
+```
+#### Get path of folder
+
+```
+folder.getPath();
+folder.path;//or
 ```
 #### Get entries (subFolder/subFiles)
 
@@ -43,19 +50,24 @@ folder.getName();
 ```
 folder.getType();
 ```
+#### Get size of folder
+
+```
+folder.getSize();
+```
 #### Delete folder
 
 ```
 folder.delete();
-//or
-folder.delete(1);
+folder.delete(0);//or
+folder.delete(1);//or
 ```
 #### Cut folder
 
 ```
 folder.cut();
-//or
-folder.cut(1);
+folder.cut(0);//or
+folder.cut(1);//or
 ```
 #### Copy folder
 
@@ -80,13 +92,13 @@ folder.place();
 #### Rename folder
 
 ```
-//folder.rename("newName"); && folder.rename("newName",0); works only in files
+//folder.rename("newName") & folder.rename("newName",0) works only in files
 folder.rename("newName",1);
 ```
 #### Move folder
 
 ```
-//folder.move(/*folderObject*/); && folder.move(/*folderObject*/,0); works only in files
+//folder.move(/*folderObject*/) & folder.move(/*folderObject*/,0) works only in files
 folder.move(/*folderObject*/,1);
 ```
 #### Update folder entries
@@ -99,6 +111,17 @@ folder.update();
 ```
 folder.new("folder","folderName");
 folder.new("file","fileName.txt",/*Blob*/);
+```
+#### Save folder in another folder
+
+```
+folder.save();
+```
+#### Download folder as zip
+
+```
+//need FileZip library
+folder.download("folder.zip");
 ```
 
 ## Files
@@ -115,10 +138,17 @@ function getFile(){
   });
 }
 ```
-#### Get parent folder handle
+#### Get parent folder *Object*
 
 ```
-file.folder;
+file.getParent();
+file.folder;//or
+```
+#### Get path of file
+
+```
+file.getPath();
+file.path;//or
 ```
 #### Get name of file
 
@@ -129,6 +159,19 @@ file.getName();
 
 ```
 file.getType();
+```
+#### Get size of file
+
+```
+file.getSize();
+```
+#### Get extensions of file
+
+```
+file.getExtensions();
+//"index.html" Return ["index","html"]
+//"script.min.js" Return ["script","min","js"]
+//"style.home.min.css" Return ["style","home","min","css"]
 ```
 #### Edit content of file
 
@@ -190,7 +233,7 @@ file.save();
 ```
 file.download("MyFile.txt");
 ```
-#### Or do all this manually with the handler
+## Or do all this manually with the handler
 
 ```
 file.handle;
