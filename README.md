@@ -1,6 +1,6 @@
 # FileAccess
-Library that facilitates the manipulation of user files, it uses "File System Access API", polyfill coming soon...<br>
-**more 73 lines of code (236 to 309)**
+Library that facilitates the manipulation of user files, it uses "File System Access API", polyfill in another future library...<br>
+**Minus 20 lines of code (309 to 289)**
 
 ## Folders
 
@@ -11,7 +11,11 @@ var appFiles = new FileAccess();
 var folder;
 
 function getFolder(){
-  appFiles.openFolder().then(function(result){
+  appFiles.openFolder({
+    id:"mainFolder",
+    mode:"readwrite",
+    init:"documents",
+  }).then(function(result){
     folder = result;
   });
 }
@@ -27,13 +31,11 @@ for(var i in folder.entries){
 
 ```
 folder.getParent();
-folder.folder;//or
 ```
 #### Get path of folder
 
 ```
 folder.getPath();
-folder.path;//or
 ```
 #### Get entries (subFolder/subFiles)
 
@@ -133,7 +135,15 @@ var appFiles = new FileAccess();
 var file;
 
 function getFile(){
-  appFiles.openFile().then(function(result){
+  appFiles.openFile({
+    multiple:true,
+    accept:[{
+      description:"Images",
+      accept:{
+        "image/*":[".png",".gif",".jpeg",".jpg"],
+      },
+    }],
+   }).then(function(result){
     file = result;
   });
 }
@@ -142,13 +152,11 @@ function getFile(){
 
 ```
 file.getParent();
-file.folder;//or
 ```
 #### Get path of file
 
 ```
 file.getPath();
-file.path;//or
 ```
 #### Get name of file
 
@@ -226,7 +234,15 @@ file.buffer();
 #### Save file
 
 ```
-file.save();
+file.save({
+  name:"image.png",
+  accept:[{
+    description:"Images",
+    accept:{
+      "image/*":[".png"],
+    },
+  }],
+);
 ```
 #### Download file
 
