@@ -1,7 +1,5 @@
 # FileAccess
 Library that facilitates the manipulation of user files, it uses "File System Access API", polyfill in another future library...<br>
-**Minus 20 lines of code (309 to 289)**
-
 ## Folders
 
 #### Open a folder
