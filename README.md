@@ -9,11 +9,7 @@ var appFiles = new FileAccess();
 var folder;
 
 function getFolder(){
-  appFiles.openFolder({
-    id:"mainFolder",
-    mode:"readwrite",
-    init:"documents",
-  }).then(function(result){
+  appFiles.openFolder().then(function(result){
     folder = result;
   });
 }
@@ -133,15 +129,7 @@ var appFiles = new FileAccess();
 var file;
 
 function getFile(){
-  appFiles.openFile({
-    multiple:true,
-    accept:[{
-      description:"Images",
-      accept:{
-        "image/*":[".png",".gif",".jpeg",".jpg"],
-      },
-    }],
-   }).then(function(result){
+  appFiles.openFile().then(function(result){
     file = result;
   });
 }
@@ -232,15 +220,7 @@ file.buffer();
 #### Save file
 
 ```
-file.save({
-  name:"image.png",
-  accept:[{
-    description:"Images",
-    accept:{
-      "image/*":[".png"],
-    },
-  }],
-);
+file.save();
 ```
 #### Download file
 
