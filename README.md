@@ -88,14 +88,16 @@ folder.place();
 #### Rename folder
 
 ```
-//folder.rename("newName") & folder.rename("newName",0) works only in files
-folder.rename("newName",1);
+folder.rename("newName")
+folder.rename("newName",0);//or
+folder.rename("newName",1);//or
 ```
 #### Move folder
 
 ```
-//folder.move(/*folderObject*/) & folder.move(/*folderObject*/,0) works only in files
-folder.move(/*folderObject*/,1);
+folder.move(AFolder)
+folder.move(AFolder,0);//or
+folder.move(AFolder,1);//or
 ```
 #### Update folder entries
 
@@ -106,7 +108,7 @@ folder.update();
 
 ```
 folder.new("folder","folderName");
-folder.new("file","fileName.txt",/*Blob*/);
+folder.new("file","fileName.txt",Blob);
 ```
 #### Save folder in another folder
 
@@ -116,8 +118,8 @@ folder.save();
 #### Download folder as zip
 
 ```
-//need FileZip library
 folder.download("folder.zip");
+//needed my FileZip library
 ```
 
 ## Files
@@ -189,9 +191,9 @@ file.rename("newName.txt",1);//or
 #### Move file
 
 ```
-file.move(/*folderObject*/);
-file.move(/*folderObject*/,0);//or
-file.move(/*folderObject*/,1);//or
+file.move(AFolder);
+file.move(AFolder,0);//or
+file.move(AFolder,1);//or
 ```
 #### Copy file
 
@@ -227,7 +229,7 @@ file.save();
 ```
 file.download("MyFile.txt");
 ```
-## Or do all this manually with the handler
+## Or do all this manually with the handle property
 
 ```
 file.handle;
